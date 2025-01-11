@@ -4,7 +4,7 @@ from scipy.linalg import qr, solve_triangular
 import time
 
 # Generate input data
-np.random.seed(42)  # Set seed for reproducibility
+np.random.seed(1)  # Set seed for reproducibility
 X = np.random.rand(100, 1)  # 100 samples, 1 feature for 2D plot
 true_beta = np.random.rand(1, 1)  # True coefficient
 y = X @ true_beta + 0.1 * np.random.randn(100, 1)  # Add some noise
@@ -25,6 +25,7 @@ beta = solve_triangular(R, QTy)
 end_time = time.time()
 elapsed_time = end_time - start_time
 
+print(f"{true_beta=} vs {beta=}")
 # Plot the data points and the regression line
 plt.figure(figsize=(10, 6))
 plt.scatter(X, y, color='blue', label="Data Points", alpha=0.7)
